@@ -22,28 +22,28 @@ At the moment there are 3 filter hooks for customizing Pinboard Linkroll without
 
 The plugin uses WordPress' fetch_feed(), which uses the WordPress Transients API with a default lifetime of 12 hours. if, for testing purposes or frequent updates, this is to be changed, it can be done from the theme's `functions.php`:
 
-  function change_pinboard_linkroll_cache_lifetime( $seconds ) {
+  `function change_pinboard_linkroll_cache_lifetime( $seconds ) {
     return 1800;
   }
-  add_filter( 'pinboard_linkroll_cache_lifetime', 'change_pinboard_linkroll_cache_lifetime' );
+  add_filter( 'pinboard_linkroll_cache_lifetime', 'change_pinboard_linkroll_cache_lifetime' );`
 
 ### `pinboard_linkroll_template( $path )`
 
 The default template of the plugin uses Bootstrap's [List group](http://getbootstrap.com/components/#list-group) markup, however to override the template with a path (which has to be relative to the active theme's path), paste the following into the theme's `functions.php`: 
 
-  function change_pinboard_linkroll_template( $path ) {
+  `function change_pinboard_linkroll_template( $path ) {
     return 'templates/widget-pinboard-linkroll.php';
   }
-  add_filter( 'pinboard_linkroll_template', 'change_pinboard_linkroll_template' );
+  add_filter( 'pinboard_linkroll_template', 'change_pinboard_linkroll_template' );`
 
 ### `pinboard_linkroll_css( $path )`
 
 By default the plugin loads it's own css file. To prevent loading additional css altogether, paste the following into the theme's `functions.php`: 
 
-  function change_pinboard_linkroll_css( $path ) {
+  `function change_pinboard_linkroll_css( $path ) {
     return false;
   }
-  add_filter( 'pinboard_linkroll_css', 'change_pinboard_linkroll_css' );
+  add_filter( 'pinboard_linkroll_css', 'change_pinboard_linkroll_css' );`
 
 The filter hook also takes a path to a css file relative to the active theme's path, which it will load instead of the default file.
 

@@ -22,7 +22,7 @@
     . $args['after_title'];
 } ?>
 
-<?php if ( count( $items ) > 0 ) : ?>
+<?php if ( count( $items ) > 0 && $items ) : ?>
 
         <ul class="list-group">
         <?php foreach ( $items as $item ) : ?>

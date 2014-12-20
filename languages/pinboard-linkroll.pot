@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pinboard Linkroll\n"
-"POT-Creation-Date: 2014-12-20 02:56+0100\n"
-"PO-Revision-Date: 2014-12-20 03:04+0100\n"
+"POT-Creation-Date: 2014-12-20 14:42+0100\n"
+"PO-Revision-Date: 2014-12-20 14:42+0100\n"
 "Last-Translator: Hans Spieß <info@hansspiess.de>\n"
 "Language-Team: Hans Spieß <info@hansspiess.de>\n"
 "Language: Deutsch\n"
@@ -17,69 +17,60 @@ msgstr ""
 
 #: ../pinboard-linkroll.php:6
 msgid "Showcase a list of https://pinboard.in links."
-msgstr "Showcase a list of https://pinboard.in links."
+msgstr ""
 
 #: ../widget/class-pinboard-linkroll-widget.php:95
 msgid "Pinboard Linkroll"
-msgstr "Pinboard Linkroll"
+msgstr ""
 
 #: ../widget/class-pinboard-linkroll-widget.php:98
 msgid "Returns a list of Pinboard Links."
-msgstr "Returns a list of Pinboard Links."
+msgstr ""
 
 #: ../widget/partials/pinboard-linkroll-widget-admin.php:19
-msgid "Title:"
-msgstr "Title:"
+msgid "Title (optional):"
+msgstr ""
 
 #: ../widget/partials/pinboard-linkroll-widget-admin.php:31
 msgid "Pinboard.in Username:"
-msgstr "Pinboard.in Username:"
+msgstr ""
 
 #: ../widget/partials/pinboard-linkroll-widget-admin.php:38
-msgid "Leave blank to show links of all users."
-msgstr "Leave blank to show links of all users."
+msgid "Leave blank to show links of all users. Optional, if tags are set."
+msgstr ""
 
 #: ../widget/partials/pinboard-linkroll-widget-admin.php:44
-msgid "Tags:"
-msgstr "Tags: "
+msgid "Show only items with those tags:"
+msgstr ""
 
 #: ../widget/partials/pinboard-linkroll-widget-admin.php:51
-msgid "Space separated, leave blank to not filter links."
-msgstr "Space separated, leave blank to not filter links."
+msgid "Space separated. Leave blank to show all items. Optional, if user is set."
+msgstr ""
 
 #: ../widget/partials/pinboard-linkroll-widget-admin.php:57
-msgid "Show links with:"
-msgstr "Show links with:"
+msgid "Items must have:"
+msgstr ""
 
 #: ../widget/partials/pinboard-linkroll-widget-admin.php:63
-msgid "...all of the given tags."
-msgstr "...all of the given tags."
+msgid "...all of the above tags."
+msgstr ""
 
 #: ../widget/partials/pinboard-linkroll-widget-admin.php:66
-msgid "...any of the given tags."
-msgstr "...any of the given tags."
+msgid "...at least one of the above tags."
+msgstr ""
 
-#: ../widget/partials/pinboard-linkroll-widget-admin.php:80
-msgid "How many links?"
-msgstr "How many links?"
+#: ../widget/partials/pinboard-linkroll-widget-admin.php:74
+msgid "How many items would you like to display?"
+msgstr ""
 
 #: ../widget/partials/pinboard-linkroll-widget-public.php:36
 msgid "Saved on "
-msgstr "Saved on "
+msgstr ""
 
 #: ../widget/partials/pinboard-linkroll-widget-public.php:42
 msgid "Tags: "
-msgstr "Tags: "
+msgstr ""
 
 #: ../widget/partials/pinboard-linkroll-widget-public.php:62
 msgid "No links found."
-msgstr "No links found."
-
-#~ msgid "Showcase a list of pinboard (https://pinboard.in) links."
-#~ msgstr "Showcase a list of pinboard (https://pinboard.in) links."
-
-#~ msgid "Widget Title"
-#~ msgstr "Widget Title"
-
-#~ msgid "Pinboard.in Username (leave blank for all users)"
-#~ msgstr "Pinboard.in Username (leave blank for all users)"
+msgstr ""

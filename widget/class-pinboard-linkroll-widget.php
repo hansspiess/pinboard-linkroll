@@ -96,7 +96,8 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
         array(
           'classname'  => $this->get_pinboard_linkroll().'-class',
           'description' => __( 'Returns a list of Pinboard Links.', $this->get_pinboard_linkroll() )
-        )
+        ),
+        array( 'width' => 400 )
       );
 
 
@@ -114,7 +115,7 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
      */
     public function widget( $args, $instance ) {
 
-      if ( $instance[ 'uri' ] ) {
+      if ( $instance[ 'uri' ] && $this->_is_pinboard_username( $instance[ 'username' ] ) ) {
 
         $items = $this->_get_feed_items( $instance );
 
@@ -176,7 +177,9 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
         $instance[ $field ]   = sanitize_text_field( $new_instance[ $field ] );
       }
       $instance[ 'operator' ] = $new_instance[ 'operator' ];
-      $instance[ 'count' ]    = $new_instance[ 'count' ];
+      $instance[ 'count' ]    = $new_instance[ 'count' ] < 0 || $new_instance[ 'count' ] > self::LINK_COUNT 
+                              ? self::LINK_COUNT / 2
+                              : $new_instance[ 'count' ];
       $instance[ 'uri' ]      = $this->_get_uri( $instance, 'rss' );
 
       if ( $instance[ 'uri' ] != $old_instance[ 'uri' ] && $instance[ 'uri' ] != '' ) {
@@ -280,9 +283,9 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
 
           foreach ( $items as $item ) {
 
-            $i[ 'permalink' ] = $item->get_permalink();
-            $i[ 'title' ] = $item->get_title();
-            $i[ 'date' ] = $item->get_date();
+            $i[ 'permalink' ]   = esc_url( strip_tags( $item->get_permalink() ) );
+            $i[ 'title' ]       = esc_html( strip_tags( $item->get_title() ) );
+            $i[ 'date' ]        = $item->get_date();
 
             if ( $item->get_category() ) {
 
@@ -303,6 +306,9 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
             $return[] = $i;
 
           }
+
+          $rss->__destruct();
+          unset( $rss );
 
           return $return;
 
@@ -333,6 +339,16 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
 
       return $this->_get_uri( $instance );
 
+    }
+
+    /**
+     * Check if usermane complies to the pinboard.in restrictions.
+     *
+     * @since   1.0.1
+     * @return  boolean
+     */
+    private function _is_pinboard_username( $username ) {
+      return preg_match( '/^[a-zA-Z0-9_\-\.]{2,29}$/i', $username ) === 1 ? true : false;
     }
 
     /**
@@ -391,7 +407,11 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
      */
     private function _get_uri( $instance, $rss = '' ) {
 
-      if ( $instance[ 'username' ] == '' && $instance[ 'tags' ] == '' ) {
+      if ( 
+        ( $instance[ 'username' ] == '' && $instance[ 'tags' ] == '' )
+        ||
+        ( $instance[ 'username' ] != '' && false === $this->_is_pinboard_username( $instance[ 'username' ] ) )
+        ) {
         return false;
       }
 

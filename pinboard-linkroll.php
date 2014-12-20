@@ -3,8 +3,6 @@
 /**
  * Pinboard Linkroll
  *
- * Showcase a list of pinboard links.
- *
  * @package   Pinboard Linkroll 1
  * @author    Hans Spieß <info@hansspiess.de>
  * @license   GPL-2.0+
@@ -29,7 +27,7 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll' ) ) {
   class Pinboard_Linkroll {
 
     public static $pinboard_linkroll = 'pinboard-linkroll';
-    public static $version = '1.0.0';
+    public static $version = '1.0.1';
 
     public function __construct() {
 

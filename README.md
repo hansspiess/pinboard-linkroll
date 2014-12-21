@@ -26,28 +26,34 @@ At the moment there are 3 filter hooks for customizing Pinboard Linkroll without
 
 The plugin uses WordPress' fetch_feed(), which uses the WordPress Transients API with a default lifetime of 12 hours. If, for testing purposes or to face frequent updates, this has to be changed, it can be done from the theme's `functions.php`:
 
-    function change_pinboard_linkroll_cache_lifetime( $seconds ) {
-      return 1800;
-    }
-    add_filter( 'pinboard_linkroll_cache_lifetime', 'change_pinboard_linkroll_cache_lifetime' );
+```php
+function change_pinboard_linkroll_cache_lifetime( $seconds ) {
+  return 1800;
+}
+add_filter( 'pinboard_linkroll_cache_lifetime', 'change_pinboard_linkroll_cache_lifetime' );
+```
 
 ### Overriding the plugin template
 
 The [default template](https://github.com/hansspiess/pinboard-linkroll/blob/master/widget/partials/pinboard-linkroll-widget-public.php) of the plugin uses Bootstrap's [List group](http://getbootstrap.com/components/#list-group) markup, however to override the template with a path (which has to be relative to the active theme's path), paste the following into the theme's `functions.php` and save the new template file to the specified location: 
 
-    function change_pinboard_linkroll_template( $path ) {
-      return 'templates/widget-pinboard-linkroll.php';
-    }
-    add_filter( 'pinboard_linkroll_template', 'change_pinboard_linkroll_template' );
+```php
+function change_pinboard_linkroll_template( $path ) {
+  return 'templates/widget-pinboard-linkroll.php';
+}
+add_filter( 'pinboard_linkroll_template', 'change_pinboard_linkroll_template' );
+```
 
 ### Overriding or disabling the loading of Css 
 
 By default the plugin loads it's own css file. To prevent loading additional css altogether, paste the following into the theme's `functions.php`: 
 
-    function change_pinboard_linkroll_css( $path ) {
-      return false;
-    }
-    add_filter( 'pinboard_linkroll_css', 'change_pinboard_linkroll_css' );
+```php
+function change_pinboard_linkroll_css( $path ) {
+  return false;
+}
+add_filter( 'pinboard_linkroll_css', 'change_pinboard_linkroll_css' );
+```
 
 The filter hook also takes a path to a css file relative to the active theme's path, which it will load instead of the default file.
 

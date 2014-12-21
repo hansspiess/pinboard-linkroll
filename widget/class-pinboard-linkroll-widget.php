@@ -303,7 +303,7 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
 
             }
 
-            $return[] = $i;
+            $return[ $i[ 'permalink' ] ] = $i;
 
           }
 

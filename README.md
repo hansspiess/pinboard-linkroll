@@ -1,9 +1,9 @@
 Pinboard Linkroll
 =================
 
-This WordPress plugin showcases a pinboard.in linkroll as a widget. The feeds of multiple pinboard.in users can be merged and filtered by their tags.
+This WordPress plugin showcases a [pinboard.in](https://pinboard.in) linkroll as a widget. The feeds of multiple pinboard.in users can be merged and filtered by their tags.
 
-## Why another one?
+## Why another WordPress RSS widget?
 
 Yes, WordPress has a core RSS widget, there's a [plethora of plugins](https://wordpress.org/plugins/search.php?q=rss+widget) and there's a bunch of [single purpose tools](https://pinboard.in/resources/) for integrating Pinboard feeds into WordPress. But after checking them (at least, some of them) i found no solution with my desired feature set – so i decided to build one myself.
 
@@ -18,25 +18,29 @@ Yes, WordPress has a core RSS widget, there's a [plethora of plugins](https://wo
 
 At the moment there are 3 filter hooks for customizing Pinboard Linkroll without having to fork it.
 
-### `pinboard_linkroll_cache_lifetime( $seconds )`
+* `pinboard_linkroll_cache_lifetime( $seconds )`
+* `pinboard_linkroll_template( $path )`
+* `pinboard_linkroll_css( $path )`
 
-The plugin uses WordPress' fetch_feed(), which uses the WordPress Transients API with a default lifetime of 12 hours. if, for testing purposes or frequent updates, this is to be changed, it can be done from the theme's `functions.php`:
+### Modifying the feed cache lifetime
+
+The plugin uses WordPress' fetch_feed(), which uses the WordPress Transients API with a default lifetime of 12 hours. If, for testing purposes or to face frequent updates, this has to be changed, it can be done from the theme's `functions.php`:
 
     function change_pinboard_linkroll_cache_lifetime( $seconds ) {
       return 1800;
     }
     add_filter( 'pinboard_linkroll_cache_lifetime', 'change_pinboard_linkroll_cache_lifetime' );
 
-### `pinboard_linkroll_template( $path )`
+### Overriding the plugin template
 
-The default template of the plugin uses Bootstrap's [List group](http://getbootstrap.com/components/#list-group) markup, however to override the template with a path (which has to be relative to the active theme's path), paste the following into the theme's `functions.php`: 
+The [default template](https://github.com/hansspiess/pinboard-linkroll/blob/master/widget/partials/pinboard-linkroll-widget-public.php) of the plugin uses Bootstrap's [List group](http://getbootstrap.com/components/#list-group) markup, however to override the template with a path (which has to be relative to the active theme's path), paste the following into the theme's `functions.php` and save the new template file to the specified location: 
 
     function change_pinboard_linkroll_template( $path ) {
       return 'templates/widget-pinboard-linkroll.php';
     }
     add_filter( 'pinboard_linkroll_template', 'change_pinboard_linkroll_template' );
 
-### `pinboard_linkroll_css( $path )`
+### Overriding or disabling the loading of Css 
 
 By default the plugin loads it's own css file. To prevent loading additional css altogether, paste the following into the theme's `functions.php`: 
 

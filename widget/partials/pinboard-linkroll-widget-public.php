@@ -24,23 +24,23 @@
 
 <?php if ( count( $items ) > 0 && $items ) : ?>
 
-        <ul class="list-group">
+        <ul class="pbl pbl-container">
         <?php foreach ( $items as $item ) : ?>
-          <li class="list-group-item">
+          <li class="pbl pbl-item">
 
-            <a href="<?php echo $item[ 'permalink' ]; ?>">
-              <h4 class="list-group-item-heading"><?php echo $item[ 'title' ]; ?></h4>
+            <a class="pbl pbl-item-permalink" href="<?php echo $item[ 'permalink' ]; ?>">
+              <h4 class="pbl pbl-item-title"><?php echo $item[ 'title' ]; ?></h4>
             </a>
 
-            <p class="pinboard--date-saved">
-              <?php _e( 'Saved on ', $this->get_pinboard_linkroll() ); ?>
-              <?php echo date_i18n( get_option( 'date_format' ), strtotime( $item[ 'date' ] ) ); ?>
+            <p class="pbl pbl-item-date-container">
+              <span class="pbl pbl-item-date-heading"><?php _e( 'Saved on ', $this->get_pinboard_linkroll() ); ?></span>
+              <time class="pbl pbl-item-date" datetime="<?php echo date( 'Y-m-d H:i:s', strtotime( $item[ 'date' ] ) ); ?>"><?php echo date_i18n( get_option( 'date_format' ), strtotime( $item[ 'date' ] ) ); ?></time>
             </p>
 
             <?php if ( count( $item[ 'tags' ] ) > 0 ) : ?>
             
-            <h5 class="pinboard--tags-heading"><?php _e( 'Tags: ', $this->get_pinboard_linkroll() ); ?></h5>
-            <ul class="pinboard--tags">
+            <h5 class="pbl pbl-item-tags-heading"><?php _e( 'Tags: ', $this->get_pinboard_linkroll() ); ?></h5>
+            <ul class="pbl pbl-item-tags">
             <?php foreach ( $item[ 'tags' ] as $tag => $link ) : ?>
 
               <li>

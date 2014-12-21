@@ -20,7 +20,6 @@ At the moment there are 3 filter hooks for customizing Pinboard Linkroll without
 
 * `pinboard_linkroll_cache_lifetime( $seconds )`
 * `pinboard_linkroll_template( $path )`
-* `pinboard_linkroll_css( $path )`
 
 ### Modifying the feed cache lifetime
 
@@ -35,7 +34,7 @@ add_filter( 'pinboard_linkroll_cache_lifetime', 'change_pinboard_linkroll_cache_
 
 ### Overriding the plugin template
 
-The [default template](https://github.com/hansspiess/pinboard-linkroll/blob/master/widget/partials/pinboard-linkroll-widget-public.php) of the plugin uses Bootstrap's [List group](http://getbootstrap.com/components/#list-group) markup, however to override the template with a path (which has to be relative to the active theme's path), paste the following into the theme's `functions.php` and save the new template file to the specified location: 
+To override the [default template](https://github.com/hansspiess/pinboard-linkroll/blob/master/widget/partials/pinboard-linkroll-widget-public.php) with a path (which has to be relative to the active theme's path), paste the following into the theme's `functions.php` and save the new template file to the specified location: 
 
 ```php
 function change_pinboard_linkroll_template( $path ) {
@@ -44,20 +43,12 @@ function change_pinboard_linkroll_template( $path ) {
 add_filter( 'pinboard_linkroll_template', 'change_pinboard_linkroll_template' );
 ```
 
-### Overriding or disabling the loading of Css 
-
-By default the plugin loads it's own css file. To prevent loading additional css altogether, paste the following into the theme's `functions.php`: 
-
-```php
-function change_pinboard_linkroll_css( $path ) {
-  return false;
-}
-add_filter( 'pinboard_linkroll_css', 'change_pinboard_linkroll_css' );
-```
-
-The filter hook also takes a path to a css file relative to the active theme's path, which it will load instead of the default file.
-
 ## Changelog
+
+### 1.0.2
+
+* removed `pinboard_linkroll_css( $path )` and the loading of any css file
+* dropped bootstrap classes in favour of smacss classes in default template file
 
 ### 1.0.1
 

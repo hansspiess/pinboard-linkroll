@@ -81,11 +81,6 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
        */
       $this->pinboard_linkroll  = Pinboard_Linkroll::$pinboard_linkroll;
       $this->version            = Pinboard_Linkroll::$version;
-
-      /**
-       * Load filtered css  
-       */
-      add_action( 'wp_enqueue_scripts', array( $this, 'filtered_enqueue_styles' ) );
       
       /**
        * Wordpress Widget API Constructor 
@@ -94,14 +89,14 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
         $this->get_pinboard_linkroll(),
         __( 'Pinboard Linkroll', $this->get_pinboard_linkroll() ),
         array(
-          'classname'  => $this->get_pinboard_linkroll().'-class',
+          'classname'  => $this->get_pinboard_linkroll(),
           'description' => __( 'Returns a list of Pinboard Links.', $this->get_pinboard_linkroll() )
         ),
         array( 'width' => 400 )
       );
 
-
     } // end constructor
+    
 
     /*--------------------------------------------------*/
     /* Widget API Functions
@@ -232,28 +227,6 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
       } else {
         return false;
       }
-    }
-
-    /**
-     * Register the stylesheets for the public-facing side of the widget.
-     *
-     * @since    1.0.0
-     */
-    public function filtered_enqueue_styles() {
-      $path = apply_filters( 'pinboard_linkroll_css', plugin_dir_url( __FILE__ ) . 'css/pinboard-linkroll-widget.css' );
-      if ( file_exists( $path ) || false !== $path ) {
-        wp_enqueue_style( $this->pinboard_linkroll, $path, array(), $this->version, 'all' );
-      }
-    }
-    
-    /**
-     * Register the scripts for the public-facing side of the widget.
-     * Not used atm.
-     *
-     * @since    1.0.0
-     */
-    public function enqueue_scripts() {
-      wp_enqueue_script( $this->pinboard_linkroll, plugin_dir_url( __FILE__ ) . 'js/pinboard-linkroll-widget.js', array( 'jquery' ), $this->version, false );
     }
 
 

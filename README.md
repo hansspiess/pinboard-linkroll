@@ -16,7 +16,7 @@ Yes, WordPress has a core RSS widget, there's a [plethora of plugins](https://wo
 
 ## Customization
 
-At the moment there are 3 filter hooks for customizing Pinboard Linkroll without having to fork it.
+At the moment there are two filter hooks for customizing Pinboard Linkroll without having to fork it.
 
 * `pinboard_linkroll_cache_lifetime( $seconds )`
 * `pinboard_linkroll_template( $path )`
@@ -44,6 +44,10 @@ add_filter( 'pinboard_linkroll_template', 'change_pinboard_linkroll_template' );
 ```
 
 ## Changelog
+
+### 1.0.3
+
+* added configurable 'read more' link at the end of linklist
 
 ### 1.0.2
 

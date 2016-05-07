@@ -120,6 +120,14 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
 
       }
 
+      //  temporarily delete tags so we do not have to alter _get_uri()
+      $more_instance = $instance;
+      unset( $more_instance[ 'tags' ] );
+      $more_link = array( 
+        'url'   => $this->_get_uri( $more_instance ),
+        'label' => $instance[ 'show_more' ]
+      );
+
       /**
        * Load the default public view of the widget, if no template file is found.
        * The view uses $items, $instance, $args.
@@ -146,7 +154,8 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
         'tags'        => '',
         'operator'    => 'and',
         'count'       => self::LINK_COUNT,
-        'uri'         => false
+        'uri'         => false,
+        'show_more'   => ''
       );
       $values = wp_parse_args( $instance, $defaults );
 
@@ -168,7 +177,7 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
      */
     public function update( $new_instance, $old_instance ) {
 
-      foreach( array( 'title', 'username', 'tags' ) as $field ) {
+      foreach( array( 'title', 'username', 'tags', 'show_more' ) as $field ) {
         $instance[ $field ]   = sanitize_text_field( $new_instance[ $field ] );
       }
       $instance[ 'operator' ] = $new_instance[ 'operator' ];
@@ -311,6 +320,18 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
       $instance[ 'operator' ] = 'or';
 
       return $this->_get_uri( $instance );
+
+    }
+
+    /**
+     * Fetches feed.
+     *
+     * @since   1.0.0
+     * @return  false on error.
+     */
+    private function _get_more_link( $instance ) {
+
+      return $instance['show_more'];
 
     }
 

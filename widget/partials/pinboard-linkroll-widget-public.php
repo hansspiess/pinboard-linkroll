@@ -56,6 +56,10 @@
         <?php endforeach; ?>
         </ul>
 
+        <?php if ( $more_link != null ) : ?>
+        <a href="<?php echo $more_link[ 'url' ]; ?>"><?php echo $more_link[ 'label' ]; ?></a>
+        <?php endif; ?>
+
 <?php else: ?>
 
         <div class="alert alert-warning" role="alert">

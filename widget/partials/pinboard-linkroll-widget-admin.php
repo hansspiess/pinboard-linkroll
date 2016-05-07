@@ -87,4 +87,20 @@
 
       </p>
 
+      <!-- Show 'more' link? -->
+      <p>
+        <label for="<?php echo $this->get_field_id('show_more'); ?>">
+          <?php _e('Display a \'Watch all links\'-Link?', $this->get_pinboard_linkroll() ); ?>
+        </label>
+        <input class="widefat" 
+          id="<?php echo $this->get_field_id('show_more'); ?>" 
+          name="<?php echo $this->get_field_name('show_more'); ?>" 
+          type="text" 
+          value="<?php echo $values['show_more']; ?>" /><br>
+          <small><?php 
+          _e('Leave blank to show no link, otherwise link name.', 
+          $this->get_pinboard_linkroll() ); ?></small>
+
+      </p>
+
 <?php  ?>

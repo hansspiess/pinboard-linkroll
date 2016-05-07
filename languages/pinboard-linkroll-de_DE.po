@@ -64,6 +64,14 @@ msgstr "...mindestens einem der Tags."
 msgid "How many items would you like to display?"
 msgstr "Wieviele Links sollen angezeigt werden?"
 
+#: ../widget/partials/pinboard-linkroll-widget-admin.php:93
+msgid "Display a 'Watch all links'-Link?"
+msgstr "'Alle zeigen'-Link anzeigen?"
+
+#: ../widget/partials/pinboard-linkroll-widget-admin.php:101
+msgid "Leave blank to show no link, otherwise link name."
+msgstr "Leerlassen, um keinen Link anzuzeigen, ansonsten Bezeichnung für Link."
+
 #: ../widget/partials/pinboard-linkroll-widget-public.php:36
 msgid "Saved on "
 msgstr "Gespeichert am "

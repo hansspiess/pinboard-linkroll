@@ -7,13 +7,13 @@
  * @author    Hans Spieß <info@hansspiess.de>
  * @license   GPL-2.0+
  * @link      http://www.hansspiess.de
- * @copyright 2014 Hans Spieß
+ * @copyright 2014-2016 Hans Spieß
  *
  * @wordpress-plugin
  * Plugin Name:       Pinboard Linkroll
- * Plugin URI:        http://wordpress.org/plugins/-/
+ * Plugin URI:        https://github.com/hansspiess/pinboard-linkroll
  * Description:       Showcase a list of https://pinboard.in links.
- * Version:           1.0.0
+ * Version:           1.0.2
  * Author:            Hans Spieß
  * Author URI:        https://github.com/hansspiess
  * License:           GPL-2.0+
@@ -27,7 +27,7 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll' ) ) {
   class Pinboard_Linkroll {
 
     public static $pinboard_linkroll = 'pinboard-linkroll';
-    public static $version = '1.0.1';
+    public static $version = '1.0.2';
 
     public function __construct() {
 

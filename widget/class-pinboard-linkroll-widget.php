@@ -110,7 +110,7 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
      */
     public function widget( $args, $instance ) {
 
-      if ( $instance[ 'uri' ] && $this->_is_pinboard_username( $instance[ 'username' ] ) ) {
+      if ( $instance[ 'uri' ] ) {
 
         $items = $this->_get_feed_items( $instance );
 
@@ -120,13 +120,7 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
 
       }
 
-      //  temporarily delete tags so we do not have to alter _get_uri()
-      $more_instance = $instance;
-      unset( $more_instance[ 'tags' ] );
-      $more_link = array( 
-        'url'   => $this->_get_uri( $more_instance ),
-        'label' => $instance[ 'show_more' ]
-      );
+      $more_link = $this->_get_more_link( $instance );
 
       /**
        * Load the default public view of the widget, if no template file is found.
@@ -324,14 +318,28 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
     }
 
     /**
-     * Fetches feed.
+     * Get 'more' link.
      *
-     * @since   1.0.0
-     * @return  false on error.
+     * @since   1.0.3
+     * @return  null on error, else str url (user or pinboard base when no username is given)
      */
     private function _get_more_link( $instance ) {
 
-      return $instance['show_more'];
+      if ( 
+        ( false === $this->_is_pinboard_username( $instance[ 'username' ] ) && empty( $instance[ 'tags' ] ) )
+        ||
+        empty( $instance[ 'show_more' ] ) 
+        ) {
+        return null;
+      } else {
+        //  temporarily delete tags to get user url from _get_uri()
+        $more_instance = $instance;
+        unset( $more_instance[ 'tags' ] );
+        return array( 
+          'url'   => $this->_get_uri( $more_instance ),
+          'label' => $instance[ 'show_more' ]
+        );
+      }
 
     }
 
@@ -445,9 +453,13 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
         }
         return $uri;
 
-      } else {
+      } else if ( !empty( $uri_user ) ) {
 
         return $uri_base;
+
+      } else {
+
+        return BASE;
 
       }
       

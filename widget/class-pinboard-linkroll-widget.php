@@ -250,7 +250,7 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
       if ( ! is_wp_error( $rss ) ) {
 
         $count = intval( $instance['count'] ) > 0 ? $instance['count'] : self::LINK_COUNT;
-        $maxitems = $rss->get_item_quantity( $count ); 
+        $maxitems = $rss->get_item_quantity( intval( $count ) ); 
         $items = $rss->get_items( 0, $maxitems );
 
         if ( count( $items ) > 0 ) {
@@ -459,7 +459,7 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll_Widget' ) ) {
 
       } else {
 
-        return BASE;
+        return $base;
 
       }
       

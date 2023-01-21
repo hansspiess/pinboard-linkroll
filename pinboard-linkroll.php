@@ -34,7 +34,9 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Pinboard_Linkroll' ) ) {
       $this->load_widget_class();
 
       add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ) );
-      add_action( 'widgets_init', create_function('', 'return register_widget("Pinboard_Linkroll_Widget");') );
+      add_action( 'widgets_init', function() {
+        return register_widget("Pinboard_Linkroll_Widget");
+      });
 
     }
 

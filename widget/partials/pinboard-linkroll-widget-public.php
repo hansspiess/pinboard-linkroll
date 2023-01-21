@@ -22,7 +22,7 @@
     . $args['after_title'];
 } ?>
 
-<?php if ( !is_null($items) && count( $items ) > 0 && $items ) : ?>
+<?php if ( is_countable($items) && count( $items ) > 0 && $items ) : ?>
 
         <ul class="pbl pbl-container">
         <?php foreach ( $items as $item ) : ?>
